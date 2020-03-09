@@ -15,7 +15,7 @@
     ],
     "rewrites": [
       {
-        "source": "/api/v1/**",
+        "source": "/**",
         "function": "webApi"
       }
     ]

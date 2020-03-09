@@ -10,6 +10,7 @@ firebase-debug.log*
 .firebase/
 
 # Firebase config
+config/
 
 # Uncomment this if you'd like others to create their own Firebase project.
 # For a team working on the same Firebase project(s), it is recommended to leave
@@ -27,9 +28,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-
-# nyc test coverage
-.nyc_output
 
 # Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
@@ -63,3 +61,4 @@ node_modules/
 
 # dotenv environment variables file
 .env
+/package-lock.json
