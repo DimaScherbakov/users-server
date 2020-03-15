@@ -49,7 +49,7 @@ router.get('/pages-count', async (req: any, resp: any) => {
 router.get('/user-statistics/:userId', async (req: any, resp: any) => {
     try {
         const userId: number = +req.params.userId;
-        const stats: Array<UserStatistics> = await usersService.getUserStatistics(userId);
+        const stats: Array<UserStatistics> = await usersService.getUserStatistics(userId)   ;
 
         resp.send({
             data: stats
