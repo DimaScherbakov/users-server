@@ -35,11 +35,11 @@ router.get('/page/:pageIndex', async (request: any, response: any) => {
 router.get('/pages-count', async (req: any, resp: any) => {
     try {
         const length = await usersService.getLength();
-        const usersPerPage = length % config.usersPerPage;
-        const pages = usersPerPage === 0 ? length % usersPerPage : usersPerPage + 1;
+        let totalPages = length / config.usersPerPage;
+        totalPages = totalPages - Math.floor(totalPages) === 0 ? totalPages : totalPages + 1;
 
         resp.send({
-            length: pages
+            data: totalPages
         })
     } catch (error) {
         resp.status(500).send(error);
@@ -49,12 +49,13 @@ router.get('/pages-count', async (req: any, resp: any) => {
 router.get('/user-statistics/:userId', async (req: any, resp: any) => {
     try {
         const userId: number = +req.params.userId;
-        const stats: Array<UserStatistics> = await Promise.all(usersService.getUserStatistics(userId));
+        const stats: Array<UserStatistics> = await usersService.getUserStatistics(userId)   ;
 
         resp.send({
             data: stats
         })
     } catch (error) {
+        console.log(error);
         resp.status(500).send(error);
     }
 });
